@@ -128,13 +128,15 @@ Update "your-email-address@domain.tld" with your email address. Don't remove the
 
 Save your file Ctrl + X + S, then press y and enter
 
-### 5. (Optional) Create an ippi.fr account to activate redirection call on your mobile phone.
+### 5. Create an ippi.fr account to activate redirection call on your mobile phone.
 
 One of the functionality of this IVR is to redirect urgent call to your mobile phone.
 
 For this functionality, we need a SIP account. I choose to use a ippi.fr account but you can use another provider if you want. You can sign up here : https://www.ippi.com/index.php?page=sp-offer&lang=44&referrer=guillaumeteilletpro
 
 <img src="https://cloud.githubusercontent.com/assets/1462301/17658223/b438058a-62fc-11e6-9757-563a5f85e0b1.png" width="100%">
+
+**OPTIONAL :**
 
 When your free ippi account is ready, you need to add some credits or apply for a package to be able to use the redirection feature (it's not free of charge).
 
@@ -172,7 +174,7 @@ Now, on the left menu, click on Instances.
 
 On the Instances page, select your EC2 Instances to get all the details of your instance :
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17659302/2ac914e4-6304-11e6-91c9-5e744ca74d26.png" width="50%">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17659302/2ac914e4-6304-11e6-91c9-5e744ca74d26.png" width="100%">
 
 We will need the private IP and the public IP in the next step !
 
@@ -185,6 +187,116 @@ cd /home/ubuntu/ivr-guillaume-teillet
 nano sip.conf
 ```
 
+After "externip=" replace YOUR_PUBLIC_IP_AWS by your elastic IP (public IP address).
+After "localnet=" replace YOUR_PRIVATE_IP_AWS by your private IP address.
+
+If you want to activate the redirection feature, replace all "YOUR_USERNAME_IPPI" by your ippi.fr username and all "YOUR_PASSWORD_IPPI" by your ippi.fr password.
+
+If you want to activate the redirection feature, your sip.conf file should look like this :
+
+```bash
+[general]
+
+bindaddr = 0.0.0.0
+context = ivr_menu_fr
+host=dynamic
+type=friend
+encryption=yes
+externip=52.209.221.205
+localnet=172.31.34.144/255.255.255.0
+nat=yes
+register=guillaumeteilletpro:mypwd33lol@ippi.fr
+
+
+[ippi]
+
+type=peer
+host=ippi.fr
+username=guillaumeteilletpro
+secret=mypwd33lol
+fromuser=guillaumeteilletpro
+fromdomain=ippi.fr
+nat=yes
+canreinvite=no
+```
+
+If you **DO NOT** want to activate the redirection feature, your sip.conf file should look like this :
+
+```bash
+[general]
+
+bindaddr = 0.0.0.0
+context = ivr_menu_fr
+host=dynamic
+type=friend
+encryption=yes
+externip=52.209.221.205
+localnet=172.31.34.144/255.255.255.0
+nat=yes
+```
+
+Save your file Ctrl + X + S, then press y and enter
+
+
+A) If you want to activate the redirection feature
+
+Run this on your EC2 instance :
+
+```bash
+cd /home/ubuntu/ivr-guillaume-teillet
+rm extensions_without_redirection.conf
+nano extensions.conf
+```
+
+This file is divided in 2 part. First part (l1 -l91) is for the french version of the IVR. Second part (l100 - l190) is for the english version.
+
+We have to update a parameter in the Dial command in [fr_option_3_1] and [en_option_3_1]
+
+```bash
+[fr_option_3_1]
+exten => 35,1,Background(/home/ubuntu/ivr-guillaume-teillet/sounds/fr/fr7)
+exten => 35,2,Dial(SIP/ippi/YOUR_PHONE_NUMBER);
+```
+
+```bash
+[en_option_3_1]
+exten => 45,1,Background(/home/ubuntu/ivr-guillaume-teillet/sounds/en/en7)
+exten => 45,2,Dial(SIP/ippi/YOUR_PHONE_NUMBER);
+```
+
+Here, replace YOUR_PHONE_NUMBER by your own phone number with the International code (for example france is 33, USA is 1). So you should have something like (for a french number) :
+
+```bash
+[fr_option_3_1]
+exten => 35,1,Background(/home/ubuntu/ivr-guillaume-teillet/sounds/fr/fr7)
+exten => 35,2,Dial(SIP/ippi/33612345678);
+```
+
+```bash
+[en_option_3_1]
+exten => 45,1,Background(/home/ubuntu/ivr-guillaume-teillet/sounds/en/en7)
+exten => 45,2,Dial(SIP/ippi/33612345678);
+```
+
+Save your file Ctrl + X + S, then press y and enter.
+
+I will explain later the commands (Section "Customize your IVR").
+
+B) If you **DO NOT** want to activate the redirection feature
+
+Run this on your EC2 instance :
+
+```bash
+cd /home/ubuntu/ivr-guillaume-teillet
+rm extensions.conf
+cp extensions_without_redirection.conf extensions.conf
+nano extensions.conf
+```
+
+This file is divided in 2 part. First part (l1 -l65) is for the french version of the IVR. Second part (l74 - l138) is for the english version.
+
+I will explain later the commands (Section "Customize your IVR").
+
 ### 8. Configuration of the voicemail folder
 
 Run this on your EC2 instance :
@@ -194,6 +306,8 @@ cd /home/ubuntu/ivr-guillaume-teillet
 chmod 777 voicemail
 ```
 
-### 9. Create a Nexmo account and buy your first number
+### 9. Try it with XLITE !
 
-### 10. Try it !
+### 10. Create a Nexmo account and buy your first number
+
+### 11. Try it with your phone !
