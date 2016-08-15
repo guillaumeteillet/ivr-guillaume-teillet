@@ -320,6 +320,32 @@ cp sip.conf /etc/asterisk/sip.conf
 
 ### 9. Open a port on your EC2 Instance
 
+Soon !!
+
 ### 10. Create a Nexmo account and buy your first number
 
+Soon !!
+
 ### 11. Try it with your phone !
+
+Now, you can use your phone to call the number you just bought on Nexmo. You should be able to hear the IVR.
+
+If you want to see the incoming call on your number, run this on your EC2 instance :
+
+```bash
+asterisk -rvvvvvvvv
+```
+
+Now, the asterisk CLI is launched. After updating extensions.conf or sip.conf, you should always run this on your EC2 instance :
+
+```bash
+asterisk -rvvvvvvvv
+core restart now
+asterisk -rvvvvvvvv
+```
+
+If something doesn't work or if you need help, please open a ticket on this repository.
+
+# Customize your IVR
+
+Soon !!
