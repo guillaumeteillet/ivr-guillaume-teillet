@@ -1,2 +1,2 @@
-# ivr-guillaume-teillet
-My IVR based on Asterisk / Nexmo / ippi.fr 
+# Guillaume TEILLET IVR
+My IVR based on Asterisk / Nexmo / ippi.fr / AWS
