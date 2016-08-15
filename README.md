@@ -128,6 +128,13 @@ Update "your-email-address@domain.tld" with your email address. Don't remove the
 
 Save your file Ctrl + X + S, then press y and enter
 
+Then, run this on your EC2 Instance :
+
+```bash
+cd /home/ubuntu/ivr-guillaume-teillet
+chmod 777 wavmail.sh
+```
+
 ### 5. Create an ippi.fr account to activate redirection call on your mobile phone.
 
 One of the functionality of this IVR is to redirect urgent call to your mobile phone.
@@ -305,10 +312,13 @@ Run this on your EC2 instance :
 
 ```bash
 cd /home/ubuntu/ivr-guillaume-teillet
+mkdir voicemail
 chmod 777 voicemail
+cp extensions.conf /etc/asterisk/extensions.conf
+cp sip.conf /etc/asterisk/sip.conf
 ```
 
-### 9. Try it with XLITE !
+### 9. Open a port on your EC2 Instance
 
 ### 10. Create a Nexmo account and buy your first number
 
