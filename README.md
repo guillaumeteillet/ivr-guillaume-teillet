@@ -100,7 +100,7 @@ When the system is asking you "Do you want to continue? [Y/n]" Press Y and Enter
 <img src="https://cloud.githubusercontent.com/assets/1462301/17657699/f61ddfce-62f7-11e6-9995-e883829955a4.png" width="50%">
 
 
-### 4. Configuration
+### 4. Configuration Sendmail
 
 Run this on your EC2 instance :
 
@@ -127,3 +127,15 @@ Update "your-email-address@domain.tld" with your email address. Don't remove the
 ```
 
 Save your file Ctrl + X + S, then press y and enter
+
+### 5. (Optional) Create an ippi.fr account to activate redirection call on your mobile phone.
+
+One of the functionality of this IVR is to redirect urgent call to your mobile phone.
+
+For this functionality, we need a SIP account. I choose to use a ippi.fr account but you can use another provider if you want. You can sign up here : https://www.ippi.com/index.php?page=sp-offer&lang=44&referrer=guillaumeteilletpro
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17658223/b438058a-62fc-11e6-9757-563a5f85e0b1.png" width="50%">
+
+When your free ippi account is ready, you need to add some credits or apply for a package to be able to use the redirection feature (it's not free of charge).
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17658276/1bf04b74-62fd-11e6-8aeb-414cc8fe8cf6.png" width="50%">
