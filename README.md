@@ -1,7 +1,6 @@
 # Getting started with IVR - Interactive Voice Response
-My IVR based on Asterisk / Nexmo / ippi.fr / AWS
 
-This walkthrough describes how to create an IVR (Interactive Voice Response) in few easy steps and how to run it on your EC2 (Amazon Web Service).
+This walkthrough describes how to create an IVR (Interactive Voice Response) based on Asterisk / Nexmo / ippi.fr / AWS in few easy steps and how to run it on your EC2 (Amazon Web Service).
 
 ### Prerequisites
 
@@ -54,3 +53,27 @@ After few minutes, when the EC2 instance is ready, you should see this :
 If you clic on it, you will see all the details about the EC2 Instance.
 
 <img src="https://cloud.githubusercontent.com/assets/1462301/14612929/074f2002-059a-11e6-8073-dacc0677347e.png" width="80%">
+
+### 2. Connect to your EC2 Instance
+
+On Amazon Web Service, select EC2, Instances (in the left menu), select your instance and clic on **"Connect"** (in the top menu).
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/14646829/615f68ce-065b-11e6-9d32-bcace60ce58e.png" width="50%">
+
+Copy the ssh command. Mine is **"ssh -i "Guillaume.pem" ubuntu@ec2-54-171-135-46.eu-west-1.compute.amazonaws.com"**. Open a terminal, go to the folder that contains the key pair and paste the ssh command.
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/14647960/475d5e04-0660-11e6-806f-62fc6b5754a3.png" width="50%">
+
+Now your are connected on your EC2 Instance.
+
+### 3. Get the code
+
+Run this on your EC2 instance :
+
+```bash
+sudo su
+apt-get update
+apt-get install -y git
+git clone https://github.com/guillaumeteillet/ivr-guillaume-teillet
+cd ivr-guillaume-teillet
+```
