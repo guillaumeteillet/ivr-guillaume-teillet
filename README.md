@@ -178,6 +178,8 @@ On the Instances page, select your EC2 Instances to get all the details of your 
 
 We will need the private IP and the public IP in the next step !
 
+Now, your public address has changed. **You need to ssh again on your EC2 Instance (See step 2 - Connect to your EC2 Instance)**
+
 ### 7. Configuration Asterisk
 
 Run this on your EC2 instance :
