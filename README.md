@@ -74,6 +74,56 @@ Run this on your EC2 instance :
 sudo su
 apt-get update
 apt-get install -y git
+cd /home/ubuntu/
 git clone https://github.com/guillaumeteillet/ivr-guillaume-teillet
 cd ivr-guillaume-teillet
 ```
+
+### 3. Install Asterisk and Sendmail
+
+Run this on your EC2 instance :
+
+```bash
+apt-get install asterisk
+```
+
+When the system is asking you "Do you want to continue? [Y/n]" Press Y and Enter.
+<img src="https://cloud.githubusercontent.com/assets/1462301/17657647/a2247860-62f7-11e6-8ee6-51f9805baf07.png" width="50%">
+
+Run this on your EC2 instance :
+
+```bash
+apt-get install sendmail
+```
+
+When the system is asking you "Do you want to continue? [Y/n]" Press Y and Enter.
+<img src="https://cloud.githubusercontent.com/assets/1462301/17657699/f61ddfce-62f7-11e6-9995-e883829955a4.png" width="50%">
+
+
+### 4. Configuration
+
+Run this on your EC2 instance :
+
+```bash
+cd /home/ubuntu/ivr-guillaume-teillet
+nano wavmail.sh
+```
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17657799/dc2fe1c4-62f8-11e6-9fde-3cdc6e38f3d3.png" width="50%">
+
+Update "your-email-address@domain.tld" with your email address. Don't remove the "<>", they are important ! So if your email is tony@myprovider.com, you should have something like this :
+
+```bash
+#!/usr/bin/env bash
+
+(printf "%s\n" \
+"Subject: New message on your Voicemail !" \
+"To: Voicemail <tony@myprovider.com>" \
+"Content-Type: application/wav" \
+"Content-Disposition: attachment; filename=$(basename $1)" \
+"Content-Transfer-Encoding: base64" \
+""; base64 $1) | /usr/sbin/sendmail -t
+
+```
+
+Save your file Ctrl + X + S, then press y and enter
