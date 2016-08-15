@@ -134,8 +134,66 @@ One of the functionality of this IVR is to redirect urgent call to your mobile p
 
 For this functionality, we need a SIP account. I choose to use a ippi.fr account but you can use another provider if you want. You can sign up here : https://www.ippi.com/index.php?page=sp-offer&lang=44&referrer=guillaumeteilletpro
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17658223/b438058a-62fc-11e6-9757-563a5f85e0b1.png" width="50%">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17658223/b438058a-62fc-11e6-9757-563a5f85e0b1.png" width="100%">
 
 When your free ippi account is ready, you need to add some credits or apply for a package to be able to use the redirection feature (it's not free of charge).
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17658276/1bf04b74-62fd-11e6-8aeb-414cc8fe8cf6.png" width="50%">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17658276/1bf04b74-62fd-11e6-8aeb-414cc8fe8cf6.png" width="25%">
+
+### 6. Add an elastic ip to your EC2 Instance
+
+We will add an elastic ip to your EC2 Instance. On the left menu, in the "Network & Security" section, select "Elastic IPs".
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17658885/3f1c0dbe-6301-11e6-84a4-b07aeedf4eff.png" width="50%">
+
+On the Elastic IP page, click on the blue button "Allocate new address".
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17658909/6b8cf318-6301-11e6-8978-02b9cb4d3222.png" width="50%">
+
+A popup appears, click on "Yes, allocate"
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17658941/a4a537b4-6301-11e6-85e0-b06a58a11e34.png" width="50%">
+
+AWS will allocate an new elastic ip to your account. Click on "Close"
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17658972/f841de4a-6301-11e6-9005-a508eff38b5e.png" width="50%">
+
+Then, click on "Actions" in the menu and select "Associate Address"
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17658993/2a4750d2-6302-11e6-8027-1847a0703d51.png" width="50%">
+
+A popup appears, select your instance in the first field and then click on "Associate"
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17659038/807f5aa8-6302-11e6-9e25-91f5972e74d5.png" width="50%">
+
+Now, on the left menu, click on Instances.
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17659223/b9741d3e-6303-11e6-8626-9882510c5264.png" width="50%">
+
+On the Instances page, select your EC2 Instances to get all the details of your instance :
+
+<img src="https://cloud.githubusercontent.com/assets/1462301/17659302/2ac914e4-6304-11e6-91c9-5e744ca74d26.png" width="50%">
+
+We will need the private IP and the public IP in the next step !
+
+### 7. Configuration Asterisk
+
+Run this on your EC2 instance :
+
+```bash
+cd /home/ubuntu/ivr-guillaume-teillet
+nano sip.conf
+```
+
+### 8. Configuration of the voicemail folder
+
+Run this on your EC2 instance :
+
+```bash
+cd /home/ubuntu/ivr-guillaume-teillet
+chmod 777 voicemail
+```
+
+### 9. Create a Nexmo account and buy your first number
+
+### 10. Try it !
