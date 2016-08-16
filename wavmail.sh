@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 (printf "%s\n" \
-"Subject: New message on your Voicemail !" \
+"Subject: New message on your Voicemail from $2 !" \
 "To: Voicemail <your-email-address@domain.tld>" \
 "Content-Type: application/wav" \
 "Content-Disposition: attachment; filename=$(basename $1)" \

@@ -127,7 +127,7 @@ Update "your-email-address@domain.tld" with your email address. Don't remove the
 #!/usr/bin/env bash
 
 (printf "%s\n" \
-"Subject: New message on your Voicemail !" \
+"Subject: New message on your Voicemail from $2 !" \
 "To: Voicemail <tony@myprovider.com>" \
 "Content-Type: application/wav" \
 "Content-Disposition: attachment; filename=$(basename $1)" \
@@ -410,14 +410,81 @@ asterisk -rvvvvvvvv
 core restart now
 ```
 
-If something doesn't work or if you need help, please open a ticket on this repository.
-
 # Customize your IVR
 
-TO DO :
+###  Convert Audio file
 
-- Explain the CMD.
-- Explain how to change audio files
+If you want to convert your own WAV file for customize your EC2 server, you can run this command on your EC2 :
+
+```bash
+sox myinitialfile.wav -r 8000 -c 1 -e signed-integer mynewfile.wav -q
+```
+
+Then change the path of the audio file in extensions.conf.
+
+###  Asterisk CMD
+
+#### Answer([delay])
+
+If the channel is ringing, answer it, otherwise do nothing. If a delay is specified, Asterisk will wait this number of milliseconds AFTER answering the call. If you want to add a delay prior answering, use Wait.
+
+#### Goto([[context|]extension|]priority)
+
+Set the priority to the specified value, optionally setting the extension and optionally the context as well. The extension BYEXTENSION is special in that it uses the current extension, thus permitting you to go to a different context, without specifying a specific extension. Please note that the LEADING arguments to Goto() are optional, not the trailing arguments.
+
+#### Playback(filename1[&filename2...][,options])
+
+Plays the specified sound or video file(s) (you need to omit the filename extension). Sound files are stored in the /var/lib/asterisk/sounds directory by default (the directory path can be changed in asterisk.conf).
+
+Playback is Multi-Language-compliant. It will look in a subdirectory corresponding with the current language code (as set by the SetLanguage command, or the channel's default language code. Failing that, it will play the non-language-specific edition.
+
+Playback will play the whole sound file(s), and when complete, return control. Compare with the Background command, which plays a sound file but returns control immediately, allowing Asterisk to perform other commands on this channel while the sound file is playing.
+
+#### Background(filename1[&filename2...][|options[|langoverride][|context]])
+
+This application will play the given list of files while waiting for an extension to be dialed by the calling channel. To continue waiting for digits after this application has finished playing files, the WaitExten application should be used. The 'langoverride' option explicity specifies which language to attempt to use for the requested sound files. If a 'context' is specified, this is the dialplan context that this application will use when exiting to a dialed extension. If one of the requested sound files does not exist, call processing will be terminated.
+
+#### WaitExten(seconds) or WaitExten([seconds][|options])
+
+Waits for the user to enter a new extension for the specified number of seconds, then returns 0. Seconds can be passed with fractions of a second. (eg: 1.5 = 1.5 seconds).
+
+#### Set(variablename=value[|variable2=value2][|options]) (up to and including Asterisk 1.2)
+
+This application can be used to set the value of channel variables or dialplan functions. It will accept up to 24 name/value pairs upto Asterisk 1.2, but only one name/value pair in Asterisk 1.4 or later.
+When setting variables, if the variable name is prefixed with _ the variable will be inherited into channels created from the current channel. If the variable name is prefixed with __ the variable will be inherited into channels created from the current channel and all children channels.
+Next to the Set() command there is also the SET function available.
+
+#### Record(filename.format[|silence][|maxduration][|option])
+
+Records from the current channel to a sound file saved with the given filename. The format parameter specifies the sound format and the extension of the file. If you don't specify a full path, the file will be stored in the /var/lib/asterisk/sounds directory. If a file with the same name and extension already exists, it will be overwritten.
+In the case of combined audio & video recording the 'format' refers only to the audio portion, while the video portion of the recording is automatically set to the active video codec (Asterisk 1.2/1.4/1.6 cannot transcode video, at least not without out-of-tree patches). You will, for example, end up with two files: sample.wav (audio) and sample.h263 (video).
+
+The optional parameters are:
+- silence: seconds of silence allowed before the recording is stopped. If missing or 0, silence detection is disabled.
+- maxduration: maximum recording duration in seconds. If missing or 0, there is no maximum.
+- option: may be 'skip' to return immediately if the line is not up, or 'noanswer' to record even if the line is not up.
+
+#### Hangup(causecode)
+
+This application hangs up the calling channel unconditionally and returns -1. If a causecode is given the channel's hangup cause is set to the given value.
+
+#### System(command arg1 arg2 etc)
+
+Execute a system (Linux shell) command
+
+#### Dial(type1/identifier1[&type2/identifier2[&type3/identifier3... ] ], timeout, options, URL)
+
+Attempts to "dial out" on all the specified channels (each specified by a type and identifier) simultaneously. The first channel that answers "wins", and all the other outgoing channels are hung up. The originating channel that triggered this Dial command is then Answered, if necessary, and the two channels are connected together ("bridged") allowing a conversation to take place between them. When the channel that triggered the Dial command hangs up, the Dial command exits.
+
+# Troubleshooting
+
+###  The sound stutters
+
+Asterisk needs bandwidth to work properly. Verify that another program does not consume too much bandwidth or start a a bigger EC2.
+
+###  Need Help ?
+
+If something doesn't work or if you need help, please open a ticket on this repository.
 
 # Useful links
 
