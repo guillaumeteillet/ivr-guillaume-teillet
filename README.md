@@ -6,6 +6,16 @@ This walkthrough describes how to create an IVR (Interactive Voice Response) bas
 
 - An AWS account
 
+### Asterisk / Nexmo / ippi.fr / AWS
+
+Asterisk is an open source framework for building communications applications. Asterisk turns an ordinary computer into a communications server. Asterisk powers IP PBX systems, VoIP gateways, conference servers and other custom solutions. It is used by small businesses, large businesses, call centers, carriers and government agencies, worldwide. Asterisk is free and open source.
+
+Nexmo is the global cloud communications platform leader providing innovative communication APIs and SDKs for voice, text, chat app and phone verification. Here you can rent a number for 0.50 cts per month (French mobile number)
+
+ippi.fr is a SIP provider where we will buy some credits to be able to transfer calls from our IVR to our mobile phone number.
+
+Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow. We will use EC2.
+
 ### 1. Create an EC2 instance
 
 First of all, you need to create an EC2 instance. On Amazon Web Service, **select EC2** :
@@ -398,4 +408,13 @@ If something doesn't work or if you need help, please open a ticket on this repo
 
 # Customize your IVR
 
-Soon !!
+TO DO :
+
+- Explain the CMD.
+- Explain how to change audio files
+
+# Useful links
+
+- Asterisk CLI : http://www.voip-info.org/wiki/view/Asterisk+CLI
+- Asterisk CMD documentation : http://www.voip-info.org/wiki/view/Asterisk+-+documentation+of+application+commands
+- The Complete IVR Setup Guide for Asterisk : https://www.ringroost.com/ivr-setup-asterisk.php
