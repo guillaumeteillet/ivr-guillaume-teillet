@@ -267,7 +267,7 @@ rm extensions_without_redirection.conf
 nano extensions.conf
 ```
 
-This file is divided in 2 part. First part (l1 -l91) is for the french version of the IVR. Second part (l100 - l190) is for the english version.
+This file is divided in 2 part. First part (l1 -l113) is for the french version of the IVR. Second part (l122 - l225) is for the english version.
 
 We have to update a parameter in the Dial command in [fr_option_3_1] and [en_option_3_1]
 
@@ -312,7 +312,7 @@ cp extensions_without_redirection.conf extensions.conf
 nano extensions.conf
 ```
 
-This file is divided in 2 part. First part (l1 -l65) is for the french version of the IVR. Second part (l74 - l138) is for the english version.
+This file is divided in 2 part. First part (l1 -l88) is for the french version of the IVR. Second part (l96 - l174) is for the english version.
 
 I will explain later the commands (Section "Customize your IVR").
 
