@@ -388,6 +388,13 @@ Save the modification.
 
 ### 11. Try it with your phone !
 
+Run this on your EC2 instance :
+
+```bash
+asterisk -rvvvvvvvv
+core restart now
+```
+
 Now, you can use your phone to call the number you just bought on Nexmo. You should be able to hear the IVR.
 
 If you want to see the incoming call on your number, run this on your EC2 instance :
@@ -401,7 +408,6 @@ Now, the asterisk CLI is launched. After updating extensions.conf or sip.conf, y
 ```bash
 asterisk -rvvvvvvvv
 core restart now
-asterisk -rvvvvvvvv
 ```
 
 If something doesn't work or if you need help, please open a ticket on this repository.
