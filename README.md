@@ -324,19 +324,19 @@ Now we will open the UDP port 5060 in the security group of our EC2 instance.
 
 Go to the instance page :
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/14611937/00c9737c-0595-11e6-86f5-7f8604b00d45.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/14611937/00c9737c-0595-11e6-86f5-7f8604b00d45.png" width="50%">
 
 Select your instance, and click on the security group.
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17685645/80552f6c-6398-11e6-901a-d264fdee5cd0.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17685645/80552f6c-6398-11e6-901a-d264fdee5cd0.png" width="50%">
 
 Then, select the Inbound Tab, and click on "Edit"
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17686244/910487f4-639d-11e6-9041-1f4f65a2d2cf.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17686244/910487f4-639d-11e6-9041-1f4f65a2d2cf.png" width="50%">
 
 A popup appears, click on "Add rule", select "Custom UDP rule" in the type field, set the "Port range" at 5060 and set "Source" at "Anywhere". Click on "Save"
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17686425/f2f48594-639e-11e6-88fb-b08033cbb316.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17686425/f2f48594-639e-11e6-88fb-b08033cbb316.png" width="50%">
 
 ### 10. Create a Nexmo account and buy your first number
 
@@ -344,35 +344,35 @@ Open a free account and get 2 euros welcome credit : https://dashboard.nexmo.com
 
 Then, select Numbers in the top menu.
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17686665/1920d374-63a1-11e6-813b-f2ea62aa343c.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17686665/1920d374-63a1-11e6-813b-f2ea62aa343c.png" width="50%">
 
 On the Numbers page, select Buy number in the left menu.
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17686747/a2525776-63a1-11e6-8b65-b54aa4eb8829.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17686747/a2525776-63a1-11e6-8b65-b54aa4eb8829.png" width="50%">
 
 On the Buy Numbers page, select a country, a feature (VOICE OR VOICE + SMS), and a type, then click on "Search"
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17686790/1428ee8c-63a2-11e6-9adc-5ab5e8170421.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17686790/1428ee8c-63a2-11e6-9adc-5ab5e8170421.png" width="50%">
 
 Choose your number on the list and click on "Buy"
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17686819/48528bb4-63a2-11e6-8083-38901e5634bc.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17686819/48528bb4-63a2-11e6-8083-38901e5634bc.png" width="50%">
 
 A popup appears, click on yes to confirm you want to buy this number.
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17686853/7f6c1476-63a2-11e6-9153-b7428bed1ff1.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17686853/7f6c1476-63a2-11e6-9153-b7428bed1ff1.png" width="50%">
 
 Then, click to "Your numbers" in the left menu.
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17687000/e9eb81a0-63a3-11e6-817f-c95dfdafabfb.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17687000/e9eb81a0-63a3-11e6-817f-c95dfdafabfb.png" width="50%">
 
 On the "Your numbers" page, select "Edit" for you number.
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17687010/f61a8bf6-63a3-11e6-8599-ed8eb94d2f1f.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17687010/f61a8bf6-63a3-11e6-8599-ed8eb94d2f1f.png" width="50%">
 
 A popup appears, in the "Voice" section, select "Forward to SIP", and set "Number, URL or String" to "30@YOUR_PUBLIC_IP_AWS" (for French version) or to "40@YOUR_PUBLIC_IP_AWS" (for English version)
 
-<img src="https://cloud.githubusercontent.com/assets/1462301/17687043/3a1c37a0-63a4-11e6-84c1-7041287da26e.png" height="300">
+<img src="https://cloud.githubusercontent.com/assets/1462301/17687043/3a1c37a0-63a4-11e6-84c1-7041287da26e.png" width="50%">
 
 Save the modification.
 
