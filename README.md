@@ -207,7 +207,7 @@ If you want to activate the redirection feature, your sip.conf file should look 
 [general]
 
 bindaddr = 0.0.0.0
-context = ivr_menu_fr
+context = ivr_menu
 host=dynamic
 type=friend
 encryption=yes
@@ -235,7 +235,7 @@ If you **DO NOT** want to activate the redirection feature, your sip.conf file s
 [general]
 
 bindaddr = 0.0.0.0
-context = ivr_menu_fr
+context = ivr_menu
 host=dynamic
 type=friend
 encryption=yes
