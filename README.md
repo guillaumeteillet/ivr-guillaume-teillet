@@ -89,7 +89,7 @@ git clone https://github.com/guillaumeteillet/ivr-guillaume-teillet
 cd ivr-guillaume-teillet
 ```
 
-### 3. Install Asterisk and Sendmail
+### 4. Install Asterisk and Sendmail
 
 Run this on your EC2 instance :
 
@@ -110,7 +110,7 @@ When the system is asking you "Do you want to continue? [Y/n]" Press Y and Enter
 <img src="https://cloud.githubusercontent.com/assets/1462301/17657699/f61ddfce-62f7-11e6-9995-e883829955a4.png" width="50%">
 
 
-### 4. Configuration Sendmail
+### 5. Configuration Sendmail
 
 Run this on your EC2 instance :
 
@@ -145,7 +145,7 @@ cd /home/ubuntu/ivr-guillaume-teillet
 chmod 777 wavmail.sh
 ```
 
-### 5. Create an ippi.fr account to activate redirection call on your mobile phone.
+### 6. Create an ippi.fr account to activate redirection call on your mobile phone.
 
 One of the functionality of this IVR is to redirect urgent call to your mobile phone.
 
@@ -159,7 +159,7 @@ When your free ippi account is ready, you need to add some credits or apply for 
 
 <img src="https://cloud.githubusercontent.com/assets/1462301/17658276/1bf04b74-62fd-11e6-8aeb-414cc8fe8cf6.png" width="25%">
 
-### 6. Add an elastic ip to your EC2 Instance
+### 7. Add an elastic ip to your EC2 Instance
 
 We will add an elastic ip to your EC2 Instance. On the left menu, in the "Network & Security" section, select "Elastic IPs".
 
@@ -197,7 +197,7 @@ We will need the private IP and the public IP in the next step !
 
 Now, your public address has changed. **You need to ssh again on your EC2 Instance (See step 2 - Connect to your EC2 Instance)**
 
-### 7. Configuration Asterisk
+### 8. Configuration Asterisk
 
 Run this on your EC2 instance :
 
@@ -316,7 +316,7 @@ This file is divided in 2 part. First part (l1 -l88) is for the french version o
 
 I will explain later the commands (Section "Customize your IVR").
 
-### 8. Configuration of the voicemail folder
+### 9. Configuration of the voicemail folder
 
 Run this on your EC2 instance :
 
@@ -328,7 +328,7 @@ cp extensions.conf /etc/asterisk/extensions.conf
 cp sip.conf /etc/asterisk/sip.conf
 ```
 
-### 9. Open a port on your EC2 Instance
+### 10. Open a port on your EC2 Instance
 
 Now we will open the UDP port 5060 in the security group of our EC2 instance.
 
@@ -348,7 +348,7 @@ A popup appears, click on "Add rule", select "Custom UDP rule" in the type field
 
 <img src="https://cloud.githubusercontent.com/assets/1462301/17686425/f2f48594-639e-11e6-88fb-b08033cbb316.png" width="100%">
 
-### 10. Create a Nexmo account and buy your first number
+### 11. Create a Nexmo account and buy your first number
 
 Open a free account and get 2 euros welcome credit : https://dashboard.nexmo.com/sign-up
 
@@ -386,7 +386,7 @@ A popup appears, in the "Voice" section, select "Forward to SIP", and set "Numbe
 
 Save the modification.
 
-### 11. Try it with your phone !
+### 12. Try it with your phone !
 
 Run this on your EC2 instance :
 
